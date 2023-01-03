@@ -1,6 +1,6 @@
 # BloomBERT
 
-_BloomBERT_ is a transformer-based NLP task classifier based on the cognitive domain of the [revised edition of Bloom's Taxonomy](https://en.wikipedia.org/wiki/Bloom%27s_taxonomy). 
+_BloomBERT_ is a transformer-based NLP task classifier based on the [revised edition of Bloom's Taxonomy](https://en.wikipedia.org/wiki/Bloom%27s_taxonomy). 
 
 Bloom's Taxonomy is a set of hierarchical models used in classifying learning outcomes into levels of complexity and specificity. Although the taxonomy is mostly employed by educators for curriculum and assessment structuring, _BloomBERT_ takes a novel approach in differentiating the difficulty of a task through `classifying productivity related tasks` into the cognitive domain of the taxonomy.
 
@@ -17,13 +17,15 @@ Bloom's Taxonomy is a set of hierarchical models used in classifying learning ou
 #### Bloom's Taxonomy:
 ![Bloom's Taxonomy](images/Revised_Blooms_Taxonomy.png)
 
+###### Description of Bloom's Taxonomy Levels [^1]
+[^1]: [Bloom's Taxonomy Graphic](https://citt.ufl.edu/resources/the-learning-process/designing-the-learning-experience/blooms-taxonomy/blooms-taxonomy-graphic-description/)
+
 ## Model Overview
 
 BloomBERT was built by fine-tuning a [DistilBERT](https://arxiv.org/abs/1910.01108) model, a lighter version of the original BERT transformer language model
-developed by Google. Utilising the pre-trained model, it was trained with a labelled data set curated for the specific task classification.
-
-BloomBERT was developed using `Tensorflow` and the `Hugging Face Transformers library`.
-The model incorporates a sequence classification head (linear layer) on top of the DistilBERT pooled outputs and was trained using `Google Colab`.
+developed by Google. It was developed using `Tensorflow` and the `Hugging Face Transformers library`, 
+incorporating a sequence classification head (linear layer) on top of the DistilBERT pooled outputs.
+Utilising the pre-trained DistilBERT model, BloomBERT was trained with a labelled data set curated for the specific task classification on `Google Colab`.
 
 
 #### Training Data Distribution:
@@ -51,12 +53,33 @@ Training Results:
 
 
 ### Frontend:
-Streamlit, Heroku
+
+<img align="left" width="35px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/heroku/heroku-original.svg" style="padding-right:10px;" />
+<img align="left" width="35px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" style="padding-right:10px;" />
+<img align="left" width="35px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg" style="padding-right:10px;" />
+
+<br />
+<br />
+
+Developed using [Streamlit](https://streamlit.io/) with Python and hosted on Heroku servers through GitHub. Frontend repository is available [here](https://github.com/RyanLauQF/bloombert-frontend).
 
 ### Backend:
-Docker, FastAPI, Google Cloud Run
+
+<img align="left" width="35px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" style="padding-right:10px;" />
+<img align="left" width="35px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg" style="padding-right:10px;" />
+<img align="left" width="35px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" style="padding-right:10px;" />
+<img align="left" width="35px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" style="padding-right:10px;" />
+<img align="left" width="35px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original-wordmark.svg" style="padding-right:10px;" />
+<img align="left" width="35px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" style="padding-right:10px;" />
+
+<br />
+<br />
+
+Developed using Python to implement FastAPI endpoints. Model was trained using Jupyter Notebook and Tensorflow libraries. Docker used to containerise the application for deployment onto Google Cloud Run.
 
 ## FastAPI Endpoints
+
+> The API endpoints are currently deployed on Google Cloud. Note some time may be required for the instance to start up.
 
 #### Request:
 `GET` https://bloom-bert-api-dmkyqqzsta-as.a.run.app
@@ -92,7 +115,9 @@ Docker, FastAPI, Google Cloud Run
 }
 ```
 
-## Development
-
 ## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Source codes for model development are available under the MIT License. Developed by [Ryan Lau Q. F.](https://github.com/RyanLauQF)
 
