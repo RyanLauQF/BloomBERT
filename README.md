@@ -2,7 +2,7 @@
 
 _BloomBERT_ is a transformer-based NLP task classifier based on the [revised edition of Bloom's Taxonomy](https://en.wikipedia.org/wiki/Bloom%27s_taxonomy). 
 
-Bloom's Taxonomy is a set of hierarchical models used in classifying learning outcomes into levels of complexity and specificity. Although the taxonomy is mostly employed by educators for curriculum and assessment structuring, _BloomBERT_ takes a novel approach in differentiating the difficulty of a task through `classifying productivity related tasks` into the cognitive domain of the taxonomy.
+Bloom's Taxonomy is a set of hierarchical models used in classifying learning outcomes into levels of complexity and specificity. Although mostly employed by educators for curriculum and assessment structuring, _BloomBERT_ takes a novel approach in differentiating the difficulty of a task through `classifying productivity related tasks` into the cognitive domain of the taxonomy.
 
 > BloomBERT can be accessed via an API endpoint or a [web application](bloombert.herokuapp.com)
 
@@ -61,7 +61,7 @@ Training Results:
 <br />
 <br />
 
-Developed using [Streamlit](https://streamlit.io/) with Python and hosted on Heroku servers through GitHub. Frontend repository is available [here](https://github.com/RyanLauQF/bloombert-frontend).
+Developed using [Streamlit](https://streamlit.io/) with Python and hosted on Heroku servers through GitHub. <br> Frontend repository is available [here](https://github.com/RyanLauQF/bloombert-frontend).
 
 ### Backend:
 
@@ -79,7 +79,7 @@ Developed using Python to implement FastAPI endpoints. Model was trained using J
 
 ## FastAPI Endpoints
 
-> The API endpoints are currently deployed on Google Cloud. Note some time may be required for the instance to start up.
+> The API endpoints are currently deployed on Google Cloud.<br>Note some time may be required for the instance to start up.
 
 #### Request:
 `GET` https://bloom-bert-api-dmkyqqzsta-as.a.run.app
@@ -114,6 +114,73 @@ Developed using Python to implement FastAPI endpoints. Model was trained using J
     }
 }
 ```
+
+## Development Journey
+
+- [ ] Naive-Bayes (TF-IDF Vectorizer)
+- [ ] Naive-Bayes (TF-IDF Vectorizer + SMOTE)
+- [ ] SVC (TF-IDF Vectorizer)
+- [ ] SVC (TF-IDF Vectorizer + SMOTE)
+- [ ] SVC (word2vec, spaCy)
+- [X] DistilBERT Transformer model
+
+### Model Overview:
+
+| Model                    | NB (TF) | NB (TF+SM) | SVC (TF) | SVC (TF+SM) | SVC (w2v+sp) | DistilBERT | 
+|--------------------------|:-------:|:----------:|:--------:|:-----------:|:------------:|:----------:|
+| Validation <br> Accuracy | 0.77328 |  0.81538   | 0.86721  |   0.88421   |   0.81296    |  0.91090   |
+
+### 1. Naive-Bayes (TF-IDF Vectorizer)
+* Starting with the Naive-Bayes algorithm that is often employed for multiclass classification problems, 
+this model was used as a performance benchmark against other models.
+```text
+Validation Accuracy: 0.77328
+```
+
+### 2. Naive-Bayes (TF-IDF Vectorizer + SMOTE)
+* After observing the presence of data imbalance, Synthetic Minority Oversampling Technique (SMOTE) was implemented
+in attempts to oversample minority data points to create a balanced dataset and achieve better classification results.
+* Using SMOTE successfully improved classification accuracy of the Naive-Bayes Model
+```text
+Validation Accuracy: 0.81538
+```
+
+### 3. SVC (TF-IDF Vectorizer)
+* To improve model accuracy, I looked into using a Linear Support Vector Classifier (SVC) for the multi-classification problem.
+* SVCs were determined to outperform Naive-Bayes in this specific classification problem with a much higher validation accuracy observed. 
+* However, the model still fails to generalise well when given inputs of similar semantics.
+```text
+Validation Accuracy: 0.86721
+```
+
+### 4. SVC (TF-IDF Vectorizer + SMOTE)
+* Applying SMOTE to this model showed slight improvements in classification accuracy.
+* However, it still suffers from the same problems as the above few models.
+```text
+Validation Accuracy: 0.88421
+```
+
+
+### 5. SVC (word2vec, spaCy)
+* To address the problem, I looked into using word2vec (word2vec-google-news-300) in replacement of TF-IDF Vectorizers to extract semantic relations from words within the sentences.
+* This model uses spaCy models to tokenise the inputs before feeding the tokens into the word2vec model.
+* Each word vector generated from the tokens are then averaged to form a sentence vector input for the SVC model.
+* Unexpectedly, there was a significant drop in accuracy compare to the previous model using TF-IDF.
+```text
+Validation Accuracy: 0.81296
+```
+
+### 6. DistilBERT Transformer model
+* After doing more research, I approached the problem from another angle using deep learning.
+* Transformer models had demonstrated significant improvements over traditional NLP systems, excelling in processing sequential data and understanding language semantics.
+* DistilBERT was chosen as the transformer model of choice due to its smaller size and greater speed compared to the original BERT model.
+* The pre-trained model was then fine-tuned using the data set that I had developed using the taxonomy.
+* It achieved the best accuracy compared to previous models and generalised well to unseen data with similar semantics, providing satisfactory predictions that fit within the taxonomy.
+* This was the model chosen for `BloomBERT`. 
+```text
+Validation Accuracy: 0.91090
+```
+
 
 ## License
 
