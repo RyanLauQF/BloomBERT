@@ -1,8 +1,8 @@
-# BloomBERT
+# BloomBERT: A Task Complexity Classifier
 
-_BloomBERT_ is a transformer-based NLP task classifier based on the [revised edition of Bloom's Taxonomy](https://en.wikipedia.org/wiki/Bloom%27s_taxonomy). 
+BloomBERT is a transformer-based NLP task classifier based on the [revised edition of Bloom's Taxonomy](https://en.wikipedia.org/wiki/Bloom%27s_taxonomy). 
 
-Bloom's Taxonomy is a set of hierarchical models used in classifying learning outcomes into levels of complexity and specificity. Although mostly employed by educators for curriculum and assessment structuring, _BloomBERT_ takes a novel approach in differentiating the difficulty of a task through `classifying productivity related tasks` into the cognitive domain of the taxonomy.
+Bloom's Taxonomy is a set of hierarchical models used in classifying learning outcomes into levels of complexity and specificity. Although mostly employed by educators for curriculum and assessment structuring, BloomBERT takes a novel approach in differentiating the difficulty of a task through `classifying productivity related tasks` into the cognitive domain of the taxonomy.
 
 > BloomBERT can be accessed via an API endpoint or a [web application](bloombert.herokuapp.com)
 
@@ -15,7 +15,7 @@ Bloom's Taxonomy is a set of hierarchical models used in classifying learning ou
 | Reviewing performance metrics for this quarter                  | Evaluate                 |
 
 #### Bloom's Taxonomy:
-![Bloom's Taxonomy](images/Revised_Blooms_Taxonomy.png)
+<img src="images/Revised_Blooms_Taxonomy.png" width="650">
 
 ###### Description of Bloom's Taxonomy Levels [^1]
 [^1]: [Bloom's Taxonomy Graphic](https://citt.ufl.edu/resources/the-learning-process/designing-the-learning-experience/blooms-taxonomy/blooms-taxonomy-graphic-description/)
@@ -124,7 +124,7 @@ Developed using Python to implement FastAPI endpoints. Model was trained using J
 - [ ] SVC (word2vec, spaCy)
 - [X] DistilBERT Transformer model
 
-### Model Overview:
+### Model Performance Comparison:
 
 | Model                    | NB (TF) | NB (TF+SM) | SVC (TF) | SVC (TF+SM) | SVC (w2v+sp) | DistilBERT | 
 |--------------------------|:-------:|:----------:|:--------:|:-----------:|:------------:|:----------:|
