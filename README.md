@@ -188,3 +188,14 @@ Validation Accuracy: 0.91090
 
 Source codes for model development are available under the MIT License. Developed by [Ryan Lau Q. F.](https://github.com/RyanLauQF)
 
+## Citation
+
+```
+@misc{BloomBERT,
+  author = {Ryan Lau},
+  title = {BloomBERT: A Task Complexity Classifier},
+  year = {2023},
+  howpublished = {\url{https://github.com/RyanLauQF/BloomBERT}}
+}
+```
+
