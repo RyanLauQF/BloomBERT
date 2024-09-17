@@ -4,7 +4,7 @@ BloomBERT is a transformer-based NLP task classifier based on the [revised editi
 
 Bloom's Taxonomy is a set of hierarchical models used in classifying learning outcomes into levels of complexity and specificity. Although mostly employed by educators for curriculum and assessment structuring, BloomBERT takes a novel approach in differentiating the difficulty of a task through `classifying productivity related tasks` into the cognitive domain of the taxonomy.
 
-> BloomBERT can be accessed via an API endpoint or a [web application](bloombert.herokuapp.com)
+> BloomBERT can be accessed via an API endpoint or a [web application](https://bloombert.herokuapp.com/)
 
 #### Example Outputs:
 
